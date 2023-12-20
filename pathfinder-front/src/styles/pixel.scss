@@ -1,0 +1,11 @@
+@import "./colors.scss";
+
+.pixel {
+    width: 1rem;
+    height: 1rem;
+    border: 0.05rem solid $dark;
+
+    &:hover {
+        background-color: $dark;
+    }
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Canvas from './Canvas';
 
-import '../styles/editor.css'
+import '../styles/editor.scss'
 
 function Editor() {
     const [canvasWidth, setCanvasWidth] = useState(32);

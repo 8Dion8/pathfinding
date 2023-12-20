@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Row from './Row';
 
-import '../styles/canvas.css'
+import '../styles/canvas.scss'
 
 function Canvas({ width, height }) {
+
+
     let rows = [];
 
     for (let i = 0; i < height; i++) {

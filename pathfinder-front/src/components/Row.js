@@ -1,7 +1,7 @@
 import React from 'react';
 import Pixel from './Pixel';
 
-import '../styles/row.css'
+import '../styles/row.scss'
 
 function Row({ width }) {
     let pixels = [];
