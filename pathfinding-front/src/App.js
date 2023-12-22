@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Editor from './components/Editor';
+import { Grommet } from 'grommet';
 
 function App() {
 
@@ -10,9 +11,9 @@ function App() {
     .catch(error => console.error('Error:', error));
 
   return (
-    <div className="App">
+    <Grommet full>
       <Editor />
-    </div>
+    </Grommet>
   );
 }
 
