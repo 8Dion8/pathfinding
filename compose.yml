@@ -1,0 +1,21 @@
+services:
+  pathfinding-front:
+    container_name: pathfinding-front
+    build: 
+      context: ./pathfinding-front
+    environment:
+      - PORT=7800
+    ports:
+      - 7800:7800
+    volumes:
+      - ./pathfinding-front:/front
+    command: npm start
+  
+  pathfinding-back:
+    container_name: pathfinding-back
+    build: 
+      context: ./pathfinding-back
+    ports:
+      - 7801:7801
+    volumes:
+      - ./pathfinding-back:/server
