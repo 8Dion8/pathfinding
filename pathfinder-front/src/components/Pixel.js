@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/pixel.scss'
 
-function Pixel() {
+function Pixel({ rkey, ckey, updfunc }) {
     const [pixelColor, setPixelColor] = useState("#071013")
     const [state, setState] = useState(0)
 
@@ -10,12 +10,18 @@ function Pixel() {
     }
 
     const toggleState = () => {
+
+        //console.log(rkey, ckey)
+        
+
         if (state == 0) {
             setState(1)
             setPixelColor("#D6C299")
+            updfunc(rkey, ckey, 1)
         } else {
             setState(0)
             setPixelColor("#071013")
+            updfunc(rkey, ckey, 0)
         }
         
     }

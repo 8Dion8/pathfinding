@@ -3,13 +3,13 @@ import Row from './Row';
 
 import '../styles/canvas.scss'
 
-function Canvas({ width, height }) {
+function Canvas({ width, height, updfunc }) {
 
 
     let rows = [];
 
     for (let i = 0; i < height; i++) {
-        rows.push(<Row key={i} width={width} />)
+        rows.push(<Row key={i} rkey={i} width={width} updfunc={updfunc} />)
     }
 
     return (
