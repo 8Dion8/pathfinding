@@ -1,5 +1,6 @@
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS
+from pathfinder.generate_maze import generate_maze
 
 app = Flask(__name__)
 CORS(app)
@@ -11,3 +12,9 @@ def root():
 @app.route("/ping")
 def ping():
     return {"ping": "pong"}
+
+@app.route("/maze")
+def maze():
+    width = int(request.args.get("width"))
+    height = int(request.args.get("height"))
+    return {"data": generate_maze(height, width)}

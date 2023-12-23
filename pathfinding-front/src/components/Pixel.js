@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useDebugValue, useEffect, useState } from 'react';
 import '../styles/pixel.scss'
 
-function Pixel({ rkey, ckey, updfunc }) {
+function Pixel({ rkey, ckey, updfunc, mainArr }) {
     const [pixelColor, setPixelColor] = useState("#071013")
     const [state, setState] = useState(0)
 
@@ -25,6 +25,12 @@ function Pixel({ rkey, ckey, updfunc }) {
         }
         
     }
+
+    useEffect(() => {
+        if (mainArr[rkey][ckey] != state) {
+            toggleState()
+        }
+    }, mainArr)
 
     return (
         <div

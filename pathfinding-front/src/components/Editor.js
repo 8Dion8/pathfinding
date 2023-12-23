@@ -47,6 +47,7 @@ function Editor() {
                     width={canvasWidth}
                     height={canvasHeight}
                     updfunc={updateGridValue}
+                    mainArr={canvasArr}
                 //onClick={console.log(canvasArr)}
                 />
                 <Box gridArea="settings" id="options" direction='column' alignContent='start' gap='xxsmall'>
@@ -57,11 +58,33 @@ function Editor() {
                             <Heading level="6" margin="small">Height</Heading>
                         </Box>
                         <Box direction='row' alignContent='center' align='center' gap='medium'>
-                            <RangeInput></RangeInput>
-                            <RangeInput></RangeInput>
+                            <RangeInput
+                                value={canvasWidth} 
+                                min={1}
+                                max={40}
+                                onChange={event => setCanvasWidth(event.target.value)}
+                            ></RangeInput>
+                            <RangeInput
+                                value={canvasHeight} 
+                                min={1}
+                                max={40}
+                                onChange={event => setCanvasHeight(event.target.value)}
+                            ></RangeInput>
                         </Box>
                     </Box>
-                    <Button primary label="Generate maze" margin="xsmall" />
+                    <Button 
+                        primary 
+                        label="Generate maze" 
+                        margin="xsmall" 
+                        onClick={() => {
+                            fetch('http://localhost:7801/maze?' + new URLSearchParams({
+                                    width: canvasWidth,
+                                    height: canvasHeight
+                                }))
+                                .then(response => response.json())
+                                .then(data => setCanvasArr(data.data))
+                                .catch(error => console.error('Error:', error))}}
+                    />
                 </Box>
 
             </Grid>

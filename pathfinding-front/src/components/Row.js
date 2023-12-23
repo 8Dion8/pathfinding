@@ -3,11 +3,11 @@ import Pixel from './Pixel';
 
 import '../styles/row.scss'
 
-function Row({ rkey, width, updfunc }) {
+function Row({ rkey, width, updfunc, mainArr }) {
     let pixels = [];
 
     for (let i = 0; i < width; i++) {
-        pixels.push(<Pixel key={i} rkey={rkey} ckey={i} updfunc={updfunc} /> )
+        pixels.push(<Pixel key={i} rkey={rkey} ckey={i} updfunc={updfunc} mainArr={mainArr} /> )
     }
 
     return (
