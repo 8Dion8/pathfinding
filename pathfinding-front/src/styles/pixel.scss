@@ -1,9 +1,9 @@
 @import "./colors.scss";
 
 .pixel {
-    width: 1.5rem;
-    height: 1.5rem;
-    border: 0.05rem solid $dark;
+    width: 1rem;
+    height: 1rem;
+    border: 0.1px solid $dark;
 
     &:hover {
         background-color: $dark;

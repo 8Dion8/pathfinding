@@ -17,4 +17,5 @@ def ping():
 def maze():
     width = int(request.args.get("width"))
     height = int(request.args.get("height"))
-    return {"data": generate_maze(height, width)}
+    maze_data, keyframes = generate_maze(height, width)
+    return {"data": maze_data, "keyframes": keyframes}

@@ -6,8 +6,8 @@ import { Button, Box, Header, Heading, Grid, RangeInput } from 'grommet';
 import '../styles/editor.scss'
 
 function Editor() {
-    const [canvasWidth, setCanvasWidth] = useState(30);
-    const [canvasHeight, setCanvasHeight] = useState(20);
+    const [canvasWidth, setCanvasWidth] = useState(35);
+    const [canvasHeight, setCanvasHeight] = useState(25);
     const [canvasArr, setCanvasArr] = useState(() => {
         return Array.from({ length: canvasHeight }, () => Array.from({ length: canvasWidth }, () => 0));
     })
@@ -26,21 +26,44 @@ function Editor() {
         });
     };
 
+    const animateCanvas = (keyframes) => {
+        for (let i = 0; i < keyframes.length; i++) {
+            setTimeout(() => {
+                setCanvasArr(keyframes[i]);
+            }, i * 10)
+
+        }
+    }
+
+    const generateMaze = () => {
+        fetch('http://localhost:7801/maze?' + new URLSearchParams({
+                width: canvasWidth,
+                height: canvasHeight
+            }))
+            .then(response => response.json())
+            .then(data => animateCanvas(data.keyframes))
+            .catch(error => console.error('Error:', error))
+    }
+
     return (
-        <Box id="editor" direction='column' pad="medium" align='center' alignContent='center'>
-            <Grid
-                rows={['xsmall', 'large']}
-                columns={['large', 'small']}
-                gap="small"
-                areas={[
-                    { name: "title", start: [0, 0], end: [1, 0] },
-                    { name: "main", start: [0, 1], end: [0, 1] },
-                    { name: "settings", start: [1, 1], end: [1, 1] }
-                ]}
+        <Box 
+            id="editor-main" 
+            direction='row' 
+            pad="medium"
+            align='center'
+            justify='center' 
+            height="90%"
+        >
+            <Box 
+                id="editor-box" 
+                direction='row' 
+                align='center'
+                height="90%"
+                background="#11262D"
+                pad="small"
+                margin="xsmall"
+                round="small"
             >
-
-                <Heading gridArea='title'>Editor</Heading>
-
 
                 <Canvas
                     gridArea="main"
@@ -48,9 +71,21 @@ function Editor() {
                     height={canvasHeight}
                     updfunc={updateGridValue}
                     mainArr={canvasArr}
-                //onClick={console.log(canvasArr)}
                 />
-                <Box gridArea="settings" id="options" direction='column' alignContent='start' gap='xxsmall'>
+            </Box>
+
+            <Box 
+                gridArea="settings" 
+                id="options" 
+                direction='column' 
+                gap='xxsmall'
+                margin="xsmall"
+                background="#11262D"
+                pad="small"
+                height="90%"
+                round="small"
+            >
+                    {/*
                     <Heading gridArea='settings' level="3" margin="xxsmall">Canvas Size:</Heading>
                     <Box direction='column' alignContent='center' align='center'>
                         <Box direction='row' alignContent='center' align='center' gap='medium'>
@@ -71,23 +106,14 @@ function Editor() {
                                 onChange={event => setCanvasHeight(event.target.value)}
                             ></RangeInput>
                         </Box>
-                    </Box>
-                    <Button 
-                        primary 
-                        label="Generate maze" 
-                        margin="xsmall" 
-                        onClick={() => {
-                            fetch('http://localhost:7801/maze?' + new URLSearchParams({
-                                    width: canvasWidth,
-                                    height: canvasHeight
-                                }))
-                                .then(response => response.json())
-                                .then(data => setCanvasArr(data.data))
-                                .catch(error => console.error('Error:', error))}}
-                    />
-                </Box>
-
-            </Grid>
+            </Box>*/}
+                <Button 
+                    default
+                    label="Generate maze"
+                    color="#16BAC5"
+                    onClick={() => {generateMaze()}}
+                />
+            </Box>
         </Box>
     )
 }
