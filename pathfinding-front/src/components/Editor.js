@@ -68,7 +68,7 @@ function Editor() {
                 direction='row' 
                 align='center'
                 height="90%"
-                background="#11262D"
+                background="#3B4252"
                 pad="small"
                 margin="xsmall"
                 round="small"
@@ -89,7 +89,7 @@ function Editor() {
                 direction='column' 
                 gap='xxsmall'
                 margin="xsmall"
-                background="#11262D"
+                background="#3B4252"
                 pad="small"
                 height="90%"
                 round="small"
@@ -119,14 +119,14 @@ function Editor() {
                 <Button 
                     default
                     label="Generate maze"
-                    color="#16BAC5"
+                    color="#8FBCBB"
                     onClick={() => {generateMaze()}}
                     margin="xxsmall"
                 />
                 <Button 
                     default
                     label="Solve (Breadth)"
-                    color="#16BAC5"
+                    color="#8FBCBB"
                     onClick={() => {solveMaze()}}
                     margin="xxsmall"
                 />

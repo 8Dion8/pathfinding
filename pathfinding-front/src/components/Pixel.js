@@ -2,7 +2,7 @@ import React, { useDebugValue, useEffect, useState } from 'react';
 import '../styles/pixel.scss'
 
 function Pixel({ rkey, ckey, updfunc, mainArr }) {
-    const [pixelColor, setPixelColor] = useState("#071013")
+    const [pixelColor, setPixelColor] = useState("#434C5E")
 
     const handleDragStart = (event) => {
         event.preventDefault()
@@ -11,19 +11,19 @@ function Pixel({ rkey, ckey, updfunc, mainArr }) {
     const colorPixel = () => {
         let state = mainArr[rkey][ckey]
         if (state == 1) {
-            setPixelColor("#D6C299")
+            setPixelColor("#D8DEE9")
         } else if (state == 0) {
-            setPixelColor("#071013")
+            setPixelColor("#434C5E")
         } else if (state == 2) {
-            setPixelColor("#16BAC5")
+            setPixelColor("#BF616A")
         } else if (state == 3) {
-            setPixelColor("#FE5F55")
+            setPixelColor("#A3BE8C")
         } else if (state == 4) {
-            setPixelColor("#F18805")
+            setPixelColor("#D08770")
         } else if (state == 5) {
-            setPixelColor("#FE5F55")
+            setPixelColor("#A3BE8C")
         } else if (state == 6) {
-            setPixelColor("#16BAC5")
+            setPixelColor("#BF616A")
         }
         
     }
