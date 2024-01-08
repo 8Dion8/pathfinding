@@ -16,6 +16,14 @@ function Pixel({ rkey, ckey, updfunc, mainArr }) {
             setPixelColor("#071013")
         } else if (state == 2) {
             setPixelColor("#16BAC5")
+        } else if (state == 3) {
+            setPixelColor("#FE5F55")
+        } else if (state == 4) {
+            setPixelColor("#F18805")
+        } else if (state == 5) {
+            setPixelColor("#FE5F55")
+        } else if (state == 6) {
+            setPixelColor("#16BAC5")
         }
         
     }
@@ -31,7 +39,7 @@ function Pixel({ rkey, ckey, updfunc, mainArr }) {
                 updfunc(rkey, ckey, 2)
             }
 
-            handleArrChange()
+            colorPixel()
         }    
     }
 

@@ -45,14 +45,23 @@ function Editor() {
             .catch(error => console.error('Error:', error))
     }
 
+    const solveMaze = () => {
+        fetch('http://localhost:7801/solve/breadth_first?' + new URLSearchParams({
+                grid: JSON.stringify(canvasArr)
+            }))
+            .then(response => response.json())
+            .then(data => animateCanvas(data.keyframes))
+            .catch(error => console.error('Error:', error))
+    }
+
     return (
         <Box 
             id="editor-main" 
             direction='row' 
             pad="medium"
             align='center'
-            justify='center' 
-            height="90%"
+            justify='center'
+            height="100%"
         >
             <Box 
                 id="editor-box" 
@@ -112,6 +121,14 @@ function Editor() {
                     label="Generate maze"
                     color="#16BAC5"
                     onClick={() => {generateMaze()}}
+                    margin="xxsmall"
+                />
+                <Button 
+                    default
+                    label="Solve (Breadth)"
+                    color="#16BAC5"
+                    onClick={() => {solveMaze()}}
+                    margin="xxsmall"
                 />
             </Box>
         </Box>
