@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Canvas from './Canvas';
-import { Button, Box, Header, Heading, Grid, RangeInput } from 'grommet';
+import { Button, Box, Header, Heading, Grid, RangeInput, RadioButtonGroup } from 'grommet';
 
 
 import '../styles/editor.scss'
@@ -11,6 +11,7 @@ function Editor() {
     const [canvasArr, setCanvasArr] = useState(() => {
         return Array.from({ length: canvasHeight }, () => Array.from({ length: canvasWidth }, () => 0));
     })
+    const [selectedType, setSelectedType] = useState("Wall");
 
     const updateGridValue = (x, y, value) => {
         setCanvasArr(prevGrid => {
@@ -80,6 +81,7 @@ function Editor() {
                     height={canvasHeight}
                     updfunc={updateGridValue}
                     mainArr={canvasArr}
+                    selectedType={selectedType}
                 />
             </Box>
 
@@ -116,6 +118,14 @@ function Editor() {
                             ></RangeInput>
                         </Box>
             </Box>*/}
+                <RadioButtonGroup
+                    name="selectType"
+                    options={["Wall", "Start", "Finish"]}
+                    value={selectedType}
+                    onChange={(event) => setSelectedType(event.target.value)}
+                    margin="small"
+                />
+
                 <Button 
                     default
                     label="Generate maze"
