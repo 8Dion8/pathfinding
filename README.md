@@ -1,4 +1,4 @@
 # pathfinding
 A web ui visualizing different path-finding algorithms
 
-![2024-01-08 14 50 33 localhost 2d4305c69489](https://github.com/8Dion8/pathfinding/assets/62215043/b4f63a83-7fd2-42e3-a9ce-93f7ac31ad14)
+![2024-01-18 13 35 37 localhost 91aebd9437d9](https://github.com/8Dion8/pathfinding/assets/62215043/3bccfe65-652f-40ac-8e00-24ad6bb99541)
