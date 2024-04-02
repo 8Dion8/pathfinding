@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_cors import CORS
-from pathfinder.generate_maze import generate_maze, breadth_first
+from pathfinder.generate_maze import generate_maze
+from pathfinder.solve_maze import breadth_first
 import json
 
 app = Flask(__name__)

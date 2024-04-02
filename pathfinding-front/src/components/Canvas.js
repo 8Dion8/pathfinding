@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Row from './Row';
+import { Box } from 'grommet';
 
 import '../styles/canvas.scss'
 
@@ -13,11 +14,13 @@ function Canvas({ width, height, updfunc, mainArr, selectedType }) {
     }
 
     return (
+        
         <div id='canvas'>
             <div id='pixels'>
                 {rows}
             </div>
         </div>
+    
     )
 }
 

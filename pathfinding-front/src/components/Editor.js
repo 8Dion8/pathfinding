@@ -27,32 +27,45 @@ function Editor() {
         });
     };
 
-    const animateCanvas = (keyframes) => {
+    const animateCanvas = (keyframes, timeout) => {
         for (let i = 0; i < keyframes.length; i++) {
             setTimeout(() => {
                 setCanvasArr(keyframes[i]);
-            }, i * 10)
+            }, i * timeout)
 
         }
     }
 
     const generateMaze = () => {
+        clear_canvas_before_solve()
         fetch('http://localhost:7801/maze?' + new URLSearchParams({
                 width: canvasWidth,
                 height: canvasHeight
             }))
             .then(response => response.json())
-            .then(data => animateCanvas(data.keyframes))
+            .then(data => animateCanvas(data.keyframes, 10))
             .catch(error => console.error('Error:', error))
     }
 
     const solveMaze = () => {
+        clear_canvas_before_solve()
         fetch('http://localhost:7801/solve/breadth_first?' + new URLSearchParams({
                 grid: JSON.stringify(canvasArr)
             }))
             .then(response => response.json())
-            .then(data => animateCanvas(data.keyframes))
+            .then(data => animateCanvas(data.keyframes, 30))
             .catch(error => console.error('Error:', error))
+    }
+
+    const clear_canvas_before_solve = () => {
+        let allowed_values = [0, 1, 2, 3]
+        for (let i = 0; i++; i < canvasHeight) {
+            for (let j = 0; j++; j < canvasWidth) {
+                if (!allowed_values.includes(canvasArr[i][j])) {
+                    updateGridValue(i, j, 0)
+                } 
+            }
+        }
     }
 
     return (
